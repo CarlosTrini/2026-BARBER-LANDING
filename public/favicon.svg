@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient: Deep luxury dark midnight charcoal -->
+    <radialGradient id="bgGrad" cx="50%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#161924" />
+      <stop offset="55%" stop-color="#0b0d13" />
+      <stop offset="100%" stop-color="#040507" />
+    </radialGradient>
+
+    <!-- Outer Gold Rim Gradient -->
+    <linearGradient id="goldRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe6a3" />
+      <stop offset="25%" stop-color="#c99f48" />
+      <stop offset="50%" stop-color="#6e501a" />
+      <stop offset="75%" stop-color="#e5b85d" />
+      <stop offset="100%" stop-color="#8a6422" />
+    </linearGradient>
+
+    <!-- Polished Brass Gradients -->
+    <linearGradient id="brassGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#543b12" />
+      <stop offset="18%" stop-color="#ab8130" />
+      <stop offset="38%" stop-color="#f7da83" />
+      <stop offset="50%" stop-color="#fff5d4" />
+      <stop offset="65%" stop-color="#f2ce72" />
+      <stop offset="85%" stop-color="#9e7224" />
+      <stop offset="100%" stop-color="#402a0a" />
+    </linearGradient>
+
+    <linearGradient id="brassDark" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2d1c04" />
+      <stop offset="25%" stop-color="#664916" />
+      <stop offset="50%" stop-color="#a87c2c" />
+      <stop offset="75%" stop-color="#593c0f" />
+      <stop offset="100%" stop-color="#1f1202" />
+    </linearGradient>
+
+    <!-- Top Globe Lamp Light & Bloom -->
+    <radialGradient id="globeGlow" cx="38%" cy="32%" r="65%">
+      <stop offset="0%" stop-color="#ffffff" />
+      <stop offset="35%" stop-color="#fffdf2" />
+      <stop offset="65%" stop-color="#ffe8b3" />
+      <stop offset="90%" stop-color="#f2bf57" />
+      <stop offset="100%" stop-color="#b07c21" />
+    </radialGradient>
+
+    <radialGradient id="haloGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffd47d" stop-opacity="0.45" />
+      <stop offset="45%" stop-color="#ffb633" stop-opacity="0.16" />
+      <stop offset="100%" stop-color="#ff9900" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Seamless Repeating Diagonal Barber Stripes Pattern (Candy Cane effect) -->
+    <pattern id="candyStripes" width="56" height="56" patternTransform="rotate(-38 0 0)" patternUnits="userSpaceOnUse">
+      <rect x="0" y="0" width="56" height="56" fill="#ffffff" />
+      <!-- Red Ribbon -->
+      <rect x="0" y="0" width="18" height="56" fill="#e11d2a" />
+      <!-- White Spacer (10px) at x=18..28 -->
+      <!-- Blue Ribbon -->
+      <rect x="28" y="0" width="18" height="56" fill="#1b5fd4" />
+      <!-- White Spacer (10px) at x=46..56 -->
+    </pattern>
+
+    <!-- 3D Cylindrical Curvature & Glass Shading -->
+    <linearGradient id="cylinder3DShade" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#000000" stop-opacity="0.65" />
+      <stop offset="10%" stop-color="#000000" stop-opacity="0.25" />
+      <stop offset="18%" stop-color="#ffffff" stop-opacity="0.65" />
+      <stop offset="26%" stop-color="#ffffff" stop-opacity="0.15" />
+      <stop offset="40%" stop-color="#000000" stop-opacity="0.0" />
+      <stop offset="72%" stop-color="#000000" stop-opacity="0.0" />
+      <stop offset="90%" stop-color="#000000" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.75" />
+    </linearGradient>
+
+    <!-- Clip Path for the Inner Cylinder Tube -->
+    <clipPath id="cylinderClip">
+      <rect x="176" y="170" width="160" height="212" rx="10" />
+    </clipPath>
+
+    <!-- Outer Drop Shadow -->
+    <filter id="shadowFilter" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.75" />
+    </filter>
+  </defs>
+
+  <!-- Circular Badge Base -->
+  <circle cx="256" cy="256" r="244" fill="url(#bgGrad)" stroke="url(#goldRim)" stroke-width="7" />
+  <!-- Delicate Inner Stitching Ring -->
+  <circle cx="256" cy="256" r="236" fill="none" stroke="#b8934a" stroke-width="1.5" stroke-dasharray="5 7" opacity="0.35" />
+
+  <!-- Warm Halo Glow around the Top Lamp Globe -->
+  <circle cx="256" cy="100" r="115" fill="url(#haloGlow)" />
+
+  <!-- Main Barber Pole Assembly with Drop Shadow -->
+  <g filter="url(#shadowFilter)">
+
+    <!-- 1. Top Decorative Finial (Spike/Acorn) -->
+    <path d="M256 18 L263 38 L256 36 L249 38 Z" fill="url(#brassGrad)" />
+    <circle cx="256" cy="40" r="5.5" fill="url(#brassGrad)" />
+
+    <!-- 2. Glowing Glass Globe Lamp -->
+    <circle cx="256" cy="100" r="50" fill="url(#globeGlow)" stroke="#c48a2a" stroke-width="2.5" />
+    <!-- Specular Glass Reflections on Globe -->
+    <ellipse cx="239" cy="83" rx="18" ry="11" transform="rotate(-25 239 83)" fill="#ffffff" opacity="0.8" />
+    <circle cx="228" cy="98" r="5" fill="#ffffff" opacity="0.55" />
+
+    <!-- 3. Globe Mount / Brass Collar -->
+    <path d="M230 146 C230 146 238 152 256 152 C274 152 282 146 282 146 L278 158 L234 158 Z" fill="url(#brassDark)" />
+    <rect x="222" y="156" width="68" height="7" rx="3" fill="url(#brassGrad)" />
+
+    <!-- 4. Upper Cylindrical Hood / Crown -->
+    <!-- Dome cap -->
+    <path d="M190 166 C190 156 216 154 256 154 C296 154 322 156 322 166 L334 174 L178 174 Z" fill="url(#brassGrad)" />
+    <!-- Flared rim moulding -->
+    <rect x="170" y="168" width="172" height="9" rx="3" fill="url(#brassDark)" />
+
+    <!-- 5. Glass Cylinder Body (with Helical Candy Stripes) -->
+    <g>
+      <!-- Base white tube under fill -->
+      <rect x="176" y="170" width="160" height="212" rx="10" fill="#ffffff" />
+      
+      <!-- Clipped Spiral Candy Stripes -->
+      <g clip-path="url(#cylinderClip)">
+        <!-- The seamless rotating pattern -->
+        <rect x="176" y="170" width="160" height="212" fill="url(#candyStripes)" />
+
+        <!-- 3D Convex Cylinder Glass Overlay (Curved Lighting & Highlights) -->
+        <rect x="176" y="170" width="160" height="212" fill="url(#cylinder3DShade)" />
+
+        <!-- Crisp vertical specular glass highlight streak -->
+        <rect x="201" y="170" width="10" height="212" fill="#ffffff" opacity="0.45" />
+        <rect x="215" y="170" width="3.5" height="212" fill="#ffffff" opacity="0.3" />
+      </g>
+
+      <!-- Glass cylinder border & polished metal rim clips -->
+      <rect x="176" y="170" width="160" height="212" rx="10" fill="none" stroke="#d4aa55" stroke-width="2.5" opacity="0.45" />
+      <rect x="178" y="172" width="156" height="208" rx="8" fill="none" stroke="#ffffff" stroke-width="1.2" opacity="0.35" />
+    </g>
+
+    <!-- 6. Lower Cylindrical Base / Bowl -->
+    <!-- Flared rim moulding -->
+    <rect x="170" y="380" width="172" height="9" rx="3" fill="url(#brassDark)" />
+    <!-- Inverted dome cup -->
+    <path d="M178 384 L334 384 L322 396 C322 410 294 415 256 415 C218 415 190 410 190 396 Z" fill="url(#brassGrad)" />
+    
+    <!-- Stepped base collar -->
+    <rect x="222" y="413" width="68" height="7" rx="3" fill="url(#brassDark)" />
+    <path d="M228 420 L284 420 L278 433 L234 433 Z" fill="url(#brassGrad)" />
+
+    <!-- 7. Bottom Drop Finial (Acorn / Pendant) -->
+    <circle cx="256" cy="442" r="11.5" fill="url(#brassGrad)" />
+    <path d="M256 465 L261.5 448 L250.5 448 Z" fill="url(#brassGrad)" />
+    <circle cx="256" cy="466" r="3.5" fill="url(#brassDark)" />
+  </g>
+
+  <!-- Ornate Vintage Details: Left & Right Barber Star Accents -->
+  <g fill="#b8934a" opacity="0.75">
+    <!-- Left Star -->
+    <polygon points="96,256 99,265 108,268 99,271 96,280 93,271 84,268 93,265" />
+    <circle cx="96" cy="268" r="1.5" fill="#fff" opacity="0.8" />
+    <!-- Right Star -->
+    <polygon points="416,256 419,265 428,268 419,271 416,280 413,271 404,268 413,265" />
+    <circle cx="416" cy="268" r="1.5" fill="#fff" opacity="0.8" />
+  </g>
+</svg>

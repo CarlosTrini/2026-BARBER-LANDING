@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@import "tags";
+
+
+
+/* @custom-variant dark (&:where(.dark, .dark *)); */
+:root {
+  --color-primary: rgb(15, 18, 30);
+  /* Azul medianoche ultra oscuro */
+  --color-secondary: #0b0b0d;
+  /* Fondo oscuro carbón profundo */
+  --color-tertiary: #121215;
+  /* Tarjetas y contenedores oscuros */
+  --color-quaternary: #1a1a21;
+  /* Bordes s sutiles */
+  --color-accent: #b8934a;
+  /* Bronce / Ámbar dorado sobrio */
+  --color-accent-dark: #8c6e33;
+  /* Hover de acentos */
+  --color-light: #f4f4f6;
+  /* Texto principal intacto */
+  --color-dark: #050507;
+  /* Fondo hiper-oscuro absoluto */
+}
+
+@theme {
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-tertiary: var(--color-tertiary);
+  --color-quaternary: var(--color-quaternary);
+  --color-accent: var(--color-accent);
+  --color-accent-dark: var(--color-accent-dark);
+  --color-light: var(--color-light);
+  --color-dark: var(--color-dark);
+}

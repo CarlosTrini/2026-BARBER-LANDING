@@ -1,0 +1,154 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import Hero from "../components/Hero.astro";
+import Services from "../components/Services.astro";
+import Benefits from "../components/Benefits.astro";
+import Gallery from "../components/Gallery.astro";
+import Products from "../components/Products.astro";
+import About from "../components/About.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Contact from "../components/Contact.astro";
+import { statsData } from "../content/data/barberData";
+
+// Datos estructurados Schema.org para Barbería Local (SEO de Alto Impacto)
+const barberShopSchema = {
+  "@context": "https://schema.org",
+  "@type": "BarberShop",
+  name: "BARBER Studio",
+  image: "https://picsum.photos/seed/barber-shop/1200/800",
+  telephone: "+525584321980",
+  email: "citas@barberstudio.com",
+  url: "https://barberstudio.com",
+  priceRange: "$$",
+  paymentAccepted: "Cash, Credit Card, Debit Card",
+  currenciesAccepted: "USD, MXN",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Av. Presidente Masaryk 410",
+    addressLocality: "Polanco",
+    addressRegion: "CDMX",
+    postalCode: "11540",
+    addressCountry: "MX",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 19.4326,
+    longitude: -99.1918,
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "10:00",
+      closes: "20:30",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Saturday"],
+      opens: "09:00",
+      closes: "20:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Sunday"],
+      opens: "11:00",
+      closes: "17:00",
+    },
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Servicios de Grooming & Estilismo Masculino",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Corte Signature Studio",
+          description: "Corte de precisión con visagismo y lavado exfoliante",
+        },
+        price: "35.00",
+        priceCurrency: "USD",
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Ritual de Barba Imperial",
+          description:
+            "Afeitado tradicional con toallas calientes y navaja libre",
+        },
+        price: "28.00",
+        priceCurrency: "USD",
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Grooming Completo Executive",
+          description: "Corte + Barba + Mascarilla Purificante",
+        },
+        price: "55.00",
+        priceCurrency: "USD",
+      },
+    ],
+  },
+};
+---
+
+<MainLayout
+  title="Cortes de Precisión & Grooming Masculino de Alta Gama"
+  description="Barbería moderna y minimalista en Polanco. Cortes con visagismo anatómico, ritual tradicional de barba a navaja libre con toallas calientes y grooming integral."
+  keywords={[
+    "barberia moderna",
+    "barberia polanco",
+    "corte de pelo hombre cdmx",
+    "ritual toalla caliente barba",
+    "master barber",
+    "grooming masculino premium",
+    "corte con visagismo",
+  ]}
+  ogType="website"
+  schema={barberShopSchema}
+>
+  <!-- 1. Hero Section -->
+  <Hero />
+
+  <!-- Métricas Geométricas en la base del Hero -->
+  <div
+    class="mt-14 sm:mt-16 w-full max-w-7xl grid grid-cols-2 lg:grid-cols-4 gap-px bg-quaternary p-px border border-quaternary shadow-2xl mx-auto"
+  >
+    {
+      statsData.map((stat) => (
+        <div class="p-4 sm:p-5 bg-dark/90 backdrop-blur-md hover:bg-tertiary transition-colors text-center">
+          <div class="font-heading text-2xl sm:text-3xl font-black text-accent font-mono tracking-tight">
+            {stat.value}
+          </div>
+          <div class="text-xs font-bold text-light uppercase mt-1 tracking-wider">
+            {stat.label}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- 2. Servicios & Tarifas -->
+  <Services />
+
+  <!-- 3. Por Qué Elegirnos / Beneficios -->
+  <Benefits />
+
+  <!-- 4. Galería Visual Studio -->
+  <Gallery />
+
+  <!-- 5. Línea de Productos Exclusivos -->
+  <Products />
+
+  <!-- 6. Sobre Nosotros / El Equipo -->
+  <About />
+
+  <!-- 7. Prueba Social / Testimonios -->
+  <Testimonials />
+
+  <!-- 8. Contacto & Formulario de Reserva -->
+  <Contact />
+</MainLayout>

@@ -1,0 +1,161 @@
+---
+import Logo from './Logo.astro';
+import { contactData } from '../content/data/barberData';
+import { MapPin, Phone, Clock, ArrowUp, Instagram, Facebook, MessageCircle } from 'lucide-astro';
+
+const currentYear = new Date().getFullYear();
+
+const navLinks = [
+  { name: 'Inicio', href: '#hero' },
+  { name: 'Servicios', href: '#servicios' },
+  { name: 'Beneficios', href: '#beneficios' },
+  { name: 'Galería', href: '#galeria' },
+  { name: 'Productos', href: '#productos' },
+  { name: 'Nosotros', href: '#nosotros' },
+  { name: 'Testimonios', href: '#testimonios' },
+  { name: 'Reservar Cita', href: '#contacto' },
+];
+
+const legalLinks = [
+  { name: 'Aviso de Privacidad', href: '#' },
+  { name: 'Términos del Servicio', href: '#' },
+  { name: 'Política de Cancelación', href: '#' },
+];
+---
+
+<footer class="w-full bg-dark border-t border-quaternary relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 relative z-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8 pb-12 border-b border-quaternary">
+      
+      <!-- Columna 1 & 2: Identidad de Marca -->
+      <div class="lg:col-span-2 space-y-5">
+        <a href="#hero" class="group inline-block" aria-label="Volver arriba">
+          <Logo size="md" />
+        </a>
+        <p class="text-xs sm:text-sm text-light/70 max-w-sm leading-relaxed font-light">
+          Santuario de alta peluquería y cuidado masculino. Combinamos visagismo arquitectónico, afeitado a navaja tradicional y productos de categoría mundial.
+        </p>
+
+        <!-- Redes Sociales Geométricas -->
+        <div class="flex items-center gap-2 pt-2">
+          <a
+            href="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram BARBER Studio"
+            class="w-10 h-10 bg-tertiary border border-quaternary text-light/80 hover:text-accent hover:border-accent flex items-center justify-center transition-all duration-300"
+          >
+            <Instagram class="w-4 h-4" />
+          </a>
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook BARBER Studio"
+            class="w-10 h-10 bg-tertiary border border-quaternary text-light/80 hover:text-accent hover:border-accent flex items-center justify-center transition-all duration-300"
+          >
+            <Facebook class="w-4 h-4" />
+          </a>
+          <a
+            href={contactData.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="WhatsApp directo"
+            class="w-10 h-10 bg-tertiary border border-quaternary text-light/80 hover:text-accent hover:border-accent flex items-center justify-center transition-all duration-300"
+          >
+            <MessageCircle class="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Columna 3: Navegación Rápida -->
+      <div>
+        <h3 class="text-xs font-bold tracking-[0.2em] uppercase text-accent mb-4">
+          Navegación
+        </h3>
+        <ul class="space-y-2.5 text-sm">
+          {navLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-light/70 hover:text-accent transition-colors duration-200 inline-flex items-center gap-1.5"
+              >
+                <span class="w-1.5 h-1.5 rounded-full bg-accent/40"></span>
+                {link.name}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Columna 4: Horarios -->
+      <div>
+        <h3 class="text-xs font-bold tracking-[0.2em] uppercase text-accent mb-4 flex items-center gap-2">
+          <Clock class="w-3.5 h-3.5 text-accent" />
+          Horarios
+        </h3>
+        <ul class="space-y-3 text-sm text-light/70">
+          {contactData.schedule.map((item) => (
+            <li class="border-b border-quaternary/40 pb-2">
+              <span class="block text-xs font-semibold text-light">{item.days}</span>
+              <span class="text-xs text-light/60 font-mono">{item.hours}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Columna 5: Ubicación & Contacto -->
+      <div>
+        <h3 class="text-xs font-bold tracking-[0.2em] uppercase text-accent mb-4">
+          Ubicación
+        </h3>
+        <div class="space-y-3 text-sm text-light/70">
+          <div class="flex items-start gap-2.5">
+            <MapPin class="w-4 h-4 text-accent shrink-0 mt-0.5" />
+            <p class="text-xs leading-relaxed">
+              {contactData.address},<br />
+              {contactData.neighborhood},<br />
+              {contactData.city}
+            </p>
+          </div>
+          <div class="flex items-center gap-2.5 pt-1">
+            <Phone class="w-4 h-4 text-accent shrink-0" />
+            <a href={`tel:${contactData.phone}`} class="text-xs text-light hover:text-accent transition-colors font-mono">
+              {contactData.phoneFormatted}
+            </a>
+          </div>
+          <div class="pt-2">
+            <a
+              href="#contacto"
+              class="inline-flex items-center justify-center w-full py-2.5 px-4 text-xs font-bold uppercase tracking-widest bg-accent text-dark hover:bg-accent-dark transition-colors duration-200"
+            >
+              Agendar Cita
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barra Inferior: Copyright y Legales -->
+    <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-light/50 font-mono">
+      <p>
+        &copy; {currentYear} <strong class="text-light/80 font-medium font-sans">{contactData.brandName}</strong>. Todos los derechos reservados.
+      </p>
+
+      <div class="flex items-center gap-6">
+        {legalLinks.map((link) => (
+          <a href={link.href} class="hover:text-light/80 transition-colors font-sans">
+            {link.name}
+          </a>
+        ))}
+        <a
+          href="#hero"
+          class="w-8 h-8 bg-tertiary border border-quaternary text-light hover:text-accent hover:border-accent flex items-center justify-center transition-colors ml-2"
+          aria-label="Subir al inicio"
+        >
+          <ArrowUp class="w-3.5 h-3.5" />
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,60 @@
+---
+import { ChevronDown, Star } from "lucide-astro";
+---
+
+<section
+  id="hero"
+  class="relative min-h-[88vh] flex items-center justify-center overflow-hidden bg-dark"
+>
+  <!-- Imagen de fondo de Picsum mucho más visible con contraste optimizado -->
+  <div class="absolute inset-0 z-0">
+    <img
+      src="https://picsum.photos/seed/barber-hero/1920/1080?grayscale"
+      alt="Atmósfera de alta peluquería en BARBER Studio"
+      class="w-full h-full object-cover object-center opacity-65 scale-102 transition-opacity duration-1000"
+      loading="eager"
+      fetchpriority="high"
+    />
+    <!-- Gradiente calibrado para garantizar legibilidad impecable manteniendo la imagen visible -->
+    <div
+      class="absolute inset-0 bg-linear-to-t from-dark via-dark/55 to-dark/45"
+    >
+    </div>
+    <div
+      class="absolute inset-0 bg-radial from-transparent via-dark/40 to-dark/85"
+    >
+    </div>
+  </div>
+
+  <!-- Contenedor Principal de Contenido (Minimalista y Directo) -->
+  <div
+    class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center flex flex-col items-center"
+  >
+    <!-- H1 Geométrico de Alto Impacto (Texto Reducido y Conciso) -->
+    <h1
+      class="font-heading text-4xl sm:text-6xl font-extrabold text-light tracking-tight max-w-4xl uppercase leading-[1.04] drop-shadow-2xl"
+    >
+      Cortes de Precisión <br /> &amp; <br />
+      <span class="text-accent relative inline-block">
+        Grooming Masculino
+        <span class="absolute -bottom-2 left-0 w-full h-0.5 bg-accent"></span>
+      </span>
+    </h1>
+
+    <!-- Subtítulo -->
+    <p
+      class="mt-5 text-base sm:text-lg text-light/90 max-w-xl font-light tracking-wide drop-shadow-md"
+    >
+      Santuario de alta peluquería, afeitado clásico y visagismo en Polanco.
+    </p>
+
+    <!-- Indicador de desplazamiento  -->
+    <a
+      href="#servicios"
+      aria-label="Ir a Servicios"
+      class="mt-10 text-light/40 hover:text-accent transition-colors p-2"
+    >
+      <ChevronDown class="w-5 h-5 animate-bounce" />
+    </a>
+  </div>
+</section>

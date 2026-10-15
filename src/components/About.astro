@@ -1,0 +1,116 @@
+---
+import { teamData } from '../content/data/barberData';
+import { Scissors, Award } from 'lucide-astro';
+---
+
+<section id="nosotros" class="py-24 sm:py-32 bg-secondary border-t border-quaternary relative">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Bloque 1: Historia y Filosofía de la Barbería -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-24">
+      
+      <!-- Texto de Filosofía e Historia (Sin Badge) -->
+      <div class="lg:col-span-7 space-y-6">
+      
+        <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-light tracking-tight uppercase leading-tight">
+          La Fusión Entre: <br />
+          <span class="text-accent">Tradición Clásica <br /> &amp; Visagismo</span>
+        </h2>
+
+        <p class="text-sm sm:text-base text-light/80 leading-relaxed font-light">
+          Fundada en 2018 en Polanco, <strong>BARBER Studio</strong> nació con un propósito claro: rescatar la ceremonia del afeitado clásico italiano y transformarla en una experiencia moderna y milimétrica para el hombre contemporáneo.
+        </p>
+
+        <p class="text-xs sm:text-sm text-light/70 leading-relaxed font-light">
+          No concebimos cortes estandarizados. Cada sesión se inicia con un análisis morfológico de visagismo que estudia las proporciones de tu fisonomía y la estructura craneal, asegurando un diseño a medida y de bajo mantenimiento diario.
+        </p>
+
+
+      </div>
+
+      <!-- Imagen  -->
+      <div class="lg:col-span-5 ">
+        <div class="overflow-hidden border border-quaternary shadow-2xl group">
+          <img
+            src="https://picsum.photos/seed/barber-studio/800/1000?grayscale"
+            alt="Interior de BARBER Studio con sillones clásicos"
+            class="w-full h-115 object-cover object-center group-hover:scale-105 transition-transform duration-700 opacity-80"
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bloque 2:  Master Barbers -->
+    <div class="pt-12">
+      
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <h3 class="font-heading text-2xl sm:text-4xl font-extrabold text-light tracking-tight uppercase">
+          Nuestros <span class="text-accent">Master Barbers</span>
+        </h3>
+        <p class="text-xs sm:text-sm text-light/70 mt-2 font-light">
+          Profesionales con años de experiencia en la élite del estilismo masculino.
+        </p>
+      </div>
+
+      <!-- Grid de los Barberos Geométrico -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+        {teamData.map((barber) => (
+          <article class="bg-tertiary border border-quaternary hover:border-light transition-all duration-300 overflow-hidden group flex flex-col justify-between">
+            
+            <!-- Foto de Picsum con Overlay Oscuro -->
+            <div class="relative h-72 sm:h-80 w-full overflow-hidden bg-dark">
+              <img
+                src={barber.image}
+                alt={`Retrato profesional de ${barber.name}, ${barber.role}`}
+                class="w-full h-full object-cover object-top opacity-85 group-hover:scale-105 group-hover:opacity-100 transition-all duration-500"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-linear-to-t from-tertiary via-transparent to-transparent"></div>
+              
+              <!-- Badge de Experiencia  -->
+              <p class="absolute top-4 right-4 p-4 bg-dark/90 border border-quaternary text-[10px] font-mono text-accent rounded-full">
+                <Scissors class="w-3.5 h-3.5 text-accent" />
+              </p>
+            </div>
+
+            <!-- Contenido de la Tarjeta del Barbero -->
+            <div class="p-6 sm:p-7 flex-1 flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] font-mono font-bold uppercase tracking-widest text-accent block mb-1">
+                  {barber.role}
+                </span>
+                <h4 class="font-heading text-xl font-bold text-light group-hover:text-accent transition-colors uppercase">
+                  {barber.name}
+                </h4>
+                
+                <div class="mt-2 text-xs font-mono text-light/80 bg-dark border border-quaternary px-2.5 py-1 inline-block">
+                  🎯 {barber.specialty}
+                </div>
+
+                <p class="mt-4 text-xs text-light/70 leading-relaxed font-light">
+                  {barber.bio}
+                </p>
+              </div>
+
+              <!-- Enlace a Agendar Geométrico -->
+              <div class="mt-6 pt-5 border-t border-quaternary">
+                <a
+                  href={`#contacto?barbero=${encodeURIComponent(barber.id)}`}
+                  class="w-full inline-flex items-center justify-center gap-2 py-3 px-4 text-xs font-bold uppercase tracking-widest bg-dark border border-quaternary text-light hover:text-accent hover:border-accent transition-colors"
+                >
+                  <Scissors class="w-3.5 h-3.5 text-accent" />
+                  <span>Agendar con {barber.name.split(' ')[0]}</span>
+                </a>
+              </div>
+            </div>
+
+          </article>
+        ))}
+      </div>
+
+    </div>
+
+  </div>
+</section>

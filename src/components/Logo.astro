@@ -1,0 +1,38 @@
+---
+interface Props {
+  class?: string;
+  size?: 'sm' | 'md' | 'lg';
+}
+
+const { class: className = '', size = 'md' } = Astro.props;
+
+const dimensions = {
+  sm: { icon: 'w-8 h-8', text: 'text-lg', sub: 'text-[9px] tracking-[0.25em]' },
+  md: { icon: 'w-10 h-10', text: 'text-xl', sub: 'text-[10px] tracking-[0.3em]' },
+  lg: { icon: 'w-12 h-12', text: 'text-2xl', sub: 'text-xs tracking-[0.35em]' },
+}[size];
+---
+
+<div class={`inline-flex items-center gap-3 select-none ${className}`}>
+  <!-- Monograma geométrico minimalista -->
+  <div class={`${dimensions.icon} bg-tertiary border border-quaternary flex items-center justify-center relative overflow-hidden group-hover:border-accent transition-colors duration-300 shadow-md shadow-dark`}>
+    <div class="absolute inset-0 bg-linear-to-br from-accent/15 via-transparent to-transparent opacity-80"></div>
+    <svg class="w-5 h-5 text-accent transition-transform duration-300 group-hover:rotate-12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="6" cy="6" r="3" />
+      <path d="M8.12 8.12 12 12" />
+      <path d="M20 4 8.12 15.88" />
+      <circle cx="6" cy="18" r="3" />
+      <path d="M14.8 14.8 20 20" />
+    </svg>
+  </div>
+
+  <!-- Marca tipográfica -->
+  <div class="flex flex-col leading-none">
+    <span class={`font-heading font-black tracking-[0.25em] text-light uppercase ${dimensions.text}`}>
+      Barber
+    </span>
+    <span class={`font-bold text-accent uppercase mt-1 ${dimensions.sub}`}>
+      High-End Studio
+    </span>
+  </div>
+</div>

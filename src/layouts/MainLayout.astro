@@ -1,0 +1,60 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import SEO from "../components/SEO.astro";
+import type { SEOProps } from "../config/seo";
+import { ArrowUp } from "lucide-astro";
+
+interface Props extends SEOProps {
+  showFooter?: boolean;
+}
+
+const { showFooter = true, ...seoProps } = Astro.props;
+---
+
+<!doctype html>
+<html
+  lang={seoProps.locale || "es"}
+  class="h-full bg-dark text-light antialiased"
+>
+  <head>
+    <!-- Componente SEO universal: Meta tags, OG, Twitter, JSON-LD Schemas -->
+    <SEO {...seoProps} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
+
+    <slot name="head" />
+  </head>
+  <body
+    class="min-h-full flex flex-col bg-dark text-light selection:bg-accent selection:text-dark font-sans"
+  >
+    <Header />
+
+    <main class="flex-1 w-full">
+      <slot />
+    </main>
+
+    {showFooter && <Footer />}
+
+    <!-- button back -->
+    <button
+      id="backToTop"
+      class="fixed bottom-4 right-4 z-50 bg-accent p-2.5 rounded-full cursor-pointer hover:bg-light hover:text-accent transition-colors"
+    >
+      <ArrowUp class="w-6 h-6" />
+    </button>
+
+    <script>
+      import { backToTop } from "../utils/backToTop";
+      document.addEventListener("DOMContentLoaded", () => {
+        backToTop();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,141 @@
+---
+import { testimonialsData } from '../content/data/barberData';
+import { Star, Quote, CheckCircle } from 'lucide-astro';
+import SwiperComponent from './swiper/SwiperComponent.astro';
+import { SwiperSlide } from "astro-swiper";
+import type { SwiperI } from './swiper/swiperType';
+
+const toolsSwiperOptions = {
+  slidesPerView: 1,
+  spaceBetween: 10,
+  // grid: {
+  //   fill:"row",
+  //   rows: 2,
+
+  // },
+  loop: true,// si uso grid, pasar a false
+  autoplay: {
+    delay: 1000,
+    disableOnInteraction: false,
+    pauseOnMouseEnter: true,
+  },
+  breakpoints: {
+    450: {
+      // sm
+      slidesPerView:1,
+      spaceBetween: 10
+    },
+    // 540: {
+    //     // sm
+    //     slidesPerView: 4,
+    //     spaceBetween: 10,
+    // },
+    640: {
+      // sm
+      slidesPerView: 2,
+      spaceBetween: 10,
+    },
+    768: {
+      // md
+      slidesPerView: 2,
+      spaceBetween: 24,
+    },
+    // 860: {
+    //   // sm
+    //   slidesPerView: 4,
+    //   spaceBetween: 10,
+    // // },
+    1024: {
+      // lg
+      slidesPerView: 3,
+      spaceBetween: 25,
+    },
+    // 1280: {
+    //   // xl
+    //   slidesPerView: 3,
+    //   spaceBetween: 25,
+    // },
+    // 1536: {
+    //     // 2xl
+    //     slidesPerView: 5,
+    //     spaceBetween: 48,
+    // },
+  },
+} as SwiperI;
+---
+
+<section id="testimonios" class="py-24 sm:py-32 bg-dark relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Encabezado de la Sección Sin Badge -->
+    <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+     
+      <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-light tracking-tight uppercase">
+        Lo Que Dicen Nuestros <span class="text-accent">Clientes</span>
+      </h2>
+      <p class="mt-4 text-sm sm:text-base text-light/70 leading-relaxed font-light">
+        La lealtad de quienes nos eligen semana a semana es nuestra mejor carta de presentación.
+      </p>
+    </div>
+
+    <!-- Grid de Testimonios Geométrico -->
+        <SwiperComponent
+      optionsSwiper={toolsSwiperOptions}
+      classSwiperUser={``}
+      classSwiperWrapperUser="pb-[45px]"
+      paginationUser={true}
+    >
+      {testimonialsData.map((testimonial) => (
+        <SwiperSlide>
+        <article class="bg-tertiary border border-quaternary hover:border-accent transition-all duration-300 p-8 flex flex-col justify-between relative group">
+          
+          <div class="absolute top-6 right-6 text-quaternary/30 group-hover:text-accent/20 transition-colors pointer-events-none">
+            <Quote class="w-8 h-8" />
+          </div>
+
+          <div>
+            <!-- Valoración en Estrellas Doradas -->
+            <div class="flex items-center gap-1 mb-6 text-accent">
+              {Array.from({ length: testimonial.rating }).map(() => (
+                <Star class="w-3.5 h-3.5 fill-accent text-accent" />
+              ))}
+            </div>
+
+            <!-- Cita / Comentario del Cliente -->
+            <p class="text-xs sm:text-sm text-light/80 leading-relaxed italic mb-8 font-light">
+              "{testimonial.comment}"
+            </p>
+          </div>
+
+          <!-- Perfil del Cliente Geométrico -->
+          <div class="pt-6 border-t border-quaternary flex items-center gap-4">
+            <!-- Avatar  -->
+            <div class="relative w-12 h-12 bg-dark border border-quaternary shrink-0 overflow-hidden flex items-center justify-center rounded-full">
+              <p class="font-heading text-lg font-bold text-accent-dark uppercase">{testimonial.name.charAt(0).toUpperCase()}</p>
+            </div>
+
+            <div class="overflow-hidden">
+              <div class="flex items-center gap-1.5">
+                <h3 class="font-heading text-sm font-bold text-light truncate uppercase">
+                  {testimonial.name}
+                </h3>
+                <CheckCircle class="w-3 h-3 text-accent shrink-0" />
+              </div>
+              
+              <p class="text-xs text-light/60 truncate font-light">
+                {testimonial.role} {testimonial.company ? `• ${testimonial.company}` : ''}
+              </p>
+
+              <span class="inline-block mt-1 text-[9px] font-mono text-accent bg-dark border border-quaternary px-2 py-0.5">
+                {testimonial.service}
+              </span>
+            </div>
+          </div>
+
+        </article>
+        </SwiperSlide>
+      ))}
+    </SwiperComponent>
+
+  </div>
+</section>

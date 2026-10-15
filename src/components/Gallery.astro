@@ -1,0 +1,53 @@
+---
+import { galleryData } from "../content/data/barberData";
+import { ArrowUpRight } from "lucide-astro";
+import GallerySwipe from "./GallerySwipe";
+---
+
+<section
+  id="galeria"
+  class="py-24 sm:py-32 bg-secondary border-t border-quaternary relative"
+>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <!-- Encabezado de Galería: Texto Corto y Sencillo (Sin Badge) -->
+    <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+      <h2
+        class="font-heading text-3xl sm:text-5xl font-extrabold text-light tracking-tight uppercase"
+      >
+        Galería <span class="text-accent">Visual</span>
+      </h2>
+      <p
+        class="mt-4 text-sm sm:text-base text-light/70 leading-relaxed font-light"
+      >
+        Un vistazo a la atmósfera, precisión artesanal y detalles que definen la
+        experiencia BARBER Studio.
+      </p>
+    </div>
+
+    <!-- Grid Geométrico de Fotografías interactivo con PhotoSwipe -->
+    <GallerySwipe
+      galleryID="gallery-barber-index"
+      images={galleryData.map((item) => ({
+        largeURL: item.image,
+        thumbnailURL: item.image,
+        width: 800,
+        height: 600,
+        title: item.title,
+        category: item.category,
+      }))}
+      client:load
+    />
+
+    <!-- Nota al pie de galería -->
+    <div class="mt-12 text-center">
+      <p class="text-xs font-mono text-light/50 tracking-wider">
+        SÍGUENOS EN INSTAGRAM: <a
+          href="https://instagram.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-accent hover:underline font-bold">@BARBERSTUDIOMX</a
+        >
+      </p>
+    </div>
+  </div>
+</section>

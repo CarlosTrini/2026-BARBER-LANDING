@@ -1,0 +1,78 @@
+---
+import { benefitsData } from '../content/data/barberData';
+import { Flame, Award, Coffee, Sparkles, Music, ShieldCheck, CheckCircle2 } from 'lucide-astro';
+
+const iconComponents = {
+  Flame,
+  Award,
+  Coffee,
+  Sparkles,
+  Music,
+  ShieldCheck,
+};
+---
+
+<section id="beneficios" class="py-24 sm:py-32 bg-dark relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    
+    <!-- Encabezado de la Sección -->
+    <div class="text-center max-w-3xl mx-auto mb-16 sm:mb-20">
+      
+      <h2 class="font-heading text-3xl sm:text-5xl font-extrabold text-light tracking-tight uppercase">
+        Por Qué Elegir <span class="text-accent"> <br /> BARBER Studio</span>
+      </h2>
+      <p class="mt-4 text-sm sm:text-base text-light/70 leading-relaxed font-light">
+        Un espacio privado de hospitalidad y cuidado personal diseñado con disciplina arquitectónica.
+      </p>
+    </div>
+
+    <!-- Grid de Beneficios Arquitectónico y Geométrico (Estilo Dribbble) -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {benefitsData.map((benefit, index) => {
+        const IconComponent = iconComponents[benefit.iconName] || Sparkles;
+        return (
+          <div class="relative bg-tertiary/60 border border-quaternary p-8 transition-all duration-300 hover:border-accent hover:bg-tertiary group">
+            
+            <!-- Línea animada al hover -->
+            <div class="absolute top-0 left-0 right-0 h-1 bg-accent scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+
+            <div class="relative ">
+              <h3 class="font-heading text-lg font-bold text-light uppercase tracking-wide group-hover:text-accent transition-colors mb-3">
+                {benefit.title}
+              </h3>
+              
+              <!-- Cabecera de la Tarjeta  -->
+              <div class="flex items-center justify-center  pb-4 border-b border-quaternary/60 absolute  left-0 top-0 opacity-10 z-0">
+                <div class="w-30 h-30 bg-dark flex items-center justify-center text-accent transition-colors duration-300">
+                  <IconComponent class="w-27 h-27" />
+                </div>
+              </div>
+
+            </div>
+            <!-- Título del Beneficio -->
+
+
+            <!-- Descripción -->
+            <p class="text-xs sm:text-sm text-light/70 leading-relaxed font-light group-hover:text-white transition-colors duration-300">
+              {benefit.description}
+            </p>
+          </div>
+        );
+      })}
+    </div>
+
+    <!-- Banner de Compromiso -->
+    <div class="mt-16 bg-tertiary border border-quaternary p-8 sm:p-12 flex flex-col lg:flex-row items-center justify-center gap-8 relative overflow-hidden">
+      <div class="max-w-2xl space-y-3 text-center lg:text-left">
+        
+        <h3 class="font-heading text-2xl sm:text-3xl font-extrabold text-light tracking-tight uppercase">
+          ¿Listo para un corte con verdadero visagismo?
+        </h3>
+        <p class="text-xs sm:text-sm text-accent/70 leading-relaxed font-light">
+          Asegura tu sesión personalizada con el barbero de tu preferencia. Butaca privada y atención puntual sin tiempos de espera.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>

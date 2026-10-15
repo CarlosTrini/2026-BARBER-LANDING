@@ -1,0 +1,61 @@
+---
+import Logo from "./Logo.astro";
+import NavbarMobile from "./NavbarMobile";
+
+const navLinks = [
+  { name: "Inicio", href: "#hero" },
+  { name: "Servicios", href: "#servicios" },
+  { name: "Beneficios", href: "#beneficios" },
+  { name: "Galería", href: "#galeria" },
+  { name: "Productos", href: "#productos" },
+  { name: "Nosotros", href: "#nosotros" },
+  { name: "Testimonios", href: "#testimonios" },
+];
+---
+
+<header
+  class="w-full border-b border-quaternary bg-dark/95 backdrop-blur-md sticky top-0 z-40"
+>
+  <div
+    class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between"
+  >
+    <!-- Logotipo Tipográfico -->
+    <a
+      href="#hero"
+      class="group flex items-center gap-3 transition-opacity hover:opacity-90"
+      aria-label="BARBER Studio Inicio"
+    >
+      <Logo size="md" />
+    </a>
+
+    <!-- Navegación de Escritorio -->
+    <nav class="hidden lg:flex items-center gap-7">
+      {
+        navLinks.map((link) => (
+          <a
+            href={link.href}
+            class="text-xs font-semibold uppercase tracking-widest text-light/70 hover:text-accent transition-colors duration-200 relative py-1 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-accent hover:after:w-full after:transition-all after:duration-300"
+          >
+            {link.name}
+          </a>
+        ))
+      }
+    </nav>
+
+    <!-- CTA Escritorio + Menú Móvil -->
+    <div class="flex items-center gap-4">
+      <a
+        href="#contacto"
+        class="hidden sm:inline-flex items-center justify-center px-6 py-2.5 text-xs font-bold uppercase tracking-widest bg-accent text-dark hover:bg-accent-dark transition-all duration-200 shadow-md shadow-accent/15 hover:-translate-y-0.5"
+      >
+        Reservar Cita
+      </a>
+
+      <!-- Componente React Isla Interactiva para Menú Móvil -->
+      <NavbarMobile
+        links={[...navLinks, { name: "Contacto & Citas", href: "#contacto" }]}
+        client:load
+      />
+    </div>
+  </div>
+</header>
